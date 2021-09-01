@@ -5,7 +5,8 @@ name: wf_notify
 on:
   workflow_run:
     workflows: [ "CI" ]
-    branches: [ notify ]
+    branches-ignore:
+      - main
     types:
       - completed
 
