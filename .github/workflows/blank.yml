@@ -25,8 +25,8 @@ jobs:
       - name: Run a one-line script
         run: echo Hello, world!
         
-      - name: sleep 20 sec
-        run: sleep 20
+      - name: sleep 60 sec
+        run: sleep 60
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
