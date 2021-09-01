@@ -24,7 +24,7 @@ jobs:
         uses: fountainhead/action-wait-for-check@v1.0.0
         id: wait-for-build
         with:
-          token: ${{ secrets.CI_PAT }}
+          token: ${{ github.token }}
           checkName: build
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
 
