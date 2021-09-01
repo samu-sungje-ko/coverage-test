@@ -20,6 +20,22 @@ jobs:
 
     # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Runs a single command using the runners shell
-      - name: run BRANCH
-        run: echo ${{ github.ref }}
+      - name: Wait for build to succeed
+        uses: fountainhead/action-wait-for-check@v1.0.0
+        id: wait-for-build
+        with:
+          token: ${{ secrets.CI_PAT }}
+          checkName: build
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+
+      - name: Do something with a passing build
+        if: steps.wait-for-build.outputs.conclusion == 'success'
+        run: |
+          echo success
+          echo ${{ github.ref }}
+
+      - name: Do something with a failing build
+        if: steps.wait-for-build.outputs.conclusion == 'failure'
+        run: |
+          echo failure
+          echo ${{ github.ref }}
