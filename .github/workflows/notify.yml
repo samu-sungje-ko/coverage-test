@@ -25,7 +25,7 @@ jobs:
         id: wait-for-build
         with:
           token: ${{ github.token }}
-          checkName: build
+          checkName: test
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
       
       - name: wait for build
