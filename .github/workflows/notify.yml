@@ -27,6 +27,10 @@ jobs:
           token: ${{ github.token }}
           checkName: build
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
+      
+      - name: wait for build
+        run: |
+          echo wait...
 
       - name: Do something with a passing build
         if: steps.wait-for-build.outputs.conclusion == 'success'
