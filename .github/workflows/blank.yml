@@ -40,4 +40,11 @@ jobs:
           
       - name: zip test
         run: zip --help        
-          
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}
+          files: coverage.info
+          flags: unittests
+          verbose: true
