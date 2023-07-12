@@ -41,6 +41,11 @@ jobs:
       - name: zip test
         run: zip --help        
 
+      - name: Install gcovr
+        run: |
+          sudo apt-get install gcovr
+          gcovr --help
+
       - name: Upload coverage to Codecov
         uses: codecov/codecov-action@v3
         with:
