@@ -31,3 +31,13 @@ jobs:
         run: |
           echo Add other actions to build,
           echo test, and deploy your project.
+
+      - name: Install lcov
+        run: |
+          sudo apt-get install lcov
+          lcov --help
+          genhtml --help
+          
+      - name: zip test
+        run: zip --help        
+          
